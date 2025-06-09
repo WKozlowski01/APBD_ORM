@@ -1,2 +1,28 @@
 dotnet ef migrations add Init
 dotnet ef database update
+
+//dropowanie bazy 
+USE master;
+GO
+
+DROP DATABASE IF EXISTS YourDatabaseName;
+GO
+
+CREATE DATABASE YourDatabaseName;
+GO
+
+// 1. Wyłącz constraints i usuń w pętli:
+EXEC sp_MSforeachtable "ALTER TABLE ? NOCHECK CONSTRAINT ALL"
+EXEC sp_MSforeachtable "DROP TABLE ?"
+
+//wszytskie tabele jakie istnieją
+SELECT TABLE_SCHEMA, TABLE_NAME
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_TYPE = 'BASE TABLE';
+
+
+//lub to 
+SELECT name FROM sys.tables;
+
+//sprawdzanie dotnetu
+dotnet list package
