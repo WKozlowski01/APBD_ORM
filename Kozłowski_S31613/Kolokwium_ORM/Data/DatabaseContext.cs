@@ -1,14 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Kolokwium_ORM.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Kolokwium_ORM.Data;
 
 public class DatabaseContext:DbContext
 {
-    // public DbSet<Doctor> Doctors { get; set; }
-    // public DbSet<Medicament> Medicaments { get; set; }
-    // public DbSet<Patient> Patients { get; set; }
-    // public DbSet<Prescription> Prescriptions { get; set; }
-    // public DbSet<Prescription_Medicament> PrescriptionMedicaments { get; set; }
+    public DbSet<Race> Races { get; set; }
+     public DbSet<RaceParticipation> RaceParticipations { get; set; }
+    public DbSet<Racer> Racers { get; set; }
+     public DbSet<Track> Tracks { get; set; }
+     public DbSet<TrackRace> TrackRaces { get; set; }
     
     protected DatabaseContext()
     {

@@ -1,4 +1,6 @@
-﻿using Kolokwium_ORM.Services;
+﻿using Kolokwium_ORM.DTOs;
+using Kolokwium_ORM.Exceptions;
+using Kolokwium_ORM.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kolokwium_ORM.Controller;
@@ -16,18 +18,49 @@ public class AppController : ControllerBase
 
 
 
-    [HttpGet("patient/{id}")]
-    public async Task<IActionResult> GetPrescription(int id)
+    [HttpGet("racers/{id}/participations")]
+    public async Task<IActionResult> GetRaces(int id)
     {
-        // var patient = await _dbService.GetAllPatientAsync(id);
-        //
-        // if (patient == null)
-        // {
-        //     return NotFound("Pacjent o id: "+id+" nie istnieje");
-        // }
-        //
-        // return Ok(patient);
-        // }
+        var races = await _dbService.GetRacer(id);
+         if (races == null)
+        {
+             return NotFound();
+         }
+        
+         return Ok(races);
+         }
+    
+    
+    
+    [HttpPost("track-races/participants")]
+    public async Task<IActionResult> InsertRacet(PostDto dto)
+    {
+
+        try
+        {
+
+        }
+        catch (IncorrectDataException)
+        {
+            return BadRequest();
+        }
+        catch (NoraceException)
+        {
+            return NotFound();
+        }
+        catch (NoRacerException)
+        {
+            return NotFound();
+        }
+        catch (NoTrackExcepion)
+        {
+            return NotFound();
+            
+        }
+
         return Ok();
+
     }
+    
+    
 }

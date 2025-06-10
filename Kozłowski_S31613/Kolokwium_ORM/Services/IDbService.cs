@@ -1,6 +1,9 @@
-﻿namespace Kolokwium_ORM.Services;
+﻿using Kolokwium_ORM.DTOs;
 
-public class IDbService
+namespace Kolokwium_ORM.Services;
+
+public interface IDbService
 {
-    
+    public Task<GetDTO.RacerDTO> GetRacer(int RacerId);
+   
 }
