@@ -26,3 +26,16 @@ SELECT name FROM sys.tables;
 
 //sprawdzanie dotnetu
 dotnet list package
+
+/////////////////////////////////////////////////////////////////////////////////
+ [Column(TypeName = "numeric")]
+ [Precision(10, 2)]
+
+[Table("Product")]
+[MaxLength(50)] 
+
+
+
+
+
+
